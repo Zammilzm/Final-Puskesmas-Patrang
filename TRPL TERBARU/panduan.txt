@@ -1,0 +1,41 @@
+Login 				-> Lery+Oka
+Pengelolaan Pasien 			-> Laras+Rozha
+Pendaftaran Pelayanan 		-> Laras+Rozha
+Pengelolaan Pelayanan Pemeriksaan	-> Zammil+Kaka
+Lihat Pelayanan Pemeriksaan 		-> Lery Oka (Laras+Rozha copas kodingane Tim
+				Lery karena Dokter Butuh Liat 
+				Pemeriksaan juga) Jadi yang buat satu aja
+Perujukan Pasien			-> Zammil+Kaka
+Validasi Perujukan Pasien 		-> Laras+Rozha
+Pengelolaan Tes Lab Dalam 		-> Lery+Oka
+Lihat Tes Lab dalam			-> Zammil+Kaka (Laras+Rozha copas kodingane Tim
+				Zammil karena Dokter Butuh Liat 
+				Tes Lab dalam juga) Jadi yang buat satu aja
+Pengelolaan Resep Obat 		-> Zammil+Kaka
+Lihat Resep Obat 			-> Zammil+Kaka
+Pelayanan Rawat Inap 		-> Zammil+Kaka
+Lihat Pelayanan rawat inap 		-> Lery Oka (Laras+Rozha copas kodingane Tim
+				Lery karena Dokter Butuh Liat 
+				Rawat Inap juga) Jadi yang buat satu aja
+Pengelolaan Kamar 			-> Lery+Oka
+Lihat Data Kamar 			-> Lery+Oka (Laras+Rozha copas kodingane Tim
+				Lery karena Dokter Butuh Liat 
+				Data Kamar dalam juga) Jadi yang buat satu aja
+Pengelolaan Administrasi Rawat Inap 	-> Laras+Rozha
+Pengelolaan Administrasi Pelayanan 	-> Laras+Rozha
+Lihat Data Pegawai 			-> Lery+Oka
+Lihat Data BPJS 			->  Laras+Rozha (Lery+Oka copas kodingane Tim
+				laras karena Tata Usaha Butuh Liat 
+				BPJS  juga) Jadi yang buat satu aja
+Lihat Rekam Medik 			-> Zammil+Kaka (Laras+Rozha copas kodingane Tim
+				Zammil karena Dokter Butuh Liat 
+				Tes Lab dalam juga) Jadi yang buat satu aja
+
+---------------------------
+Tim Laras+Rozha -> Loket, Dokter
+Tim Zammil+Kaka -> Perawat, Apoteker
+Tim Lery+Oka -> Tata Usaha, Laboran, Co Pelayanan
+---------------------------
+Tidak cuma berlaku di koding, di skenario dll juga tinggal copas misal lihat data BPJS
+yang ngerjakan skenario, activity, sequence, collaboration, dan coding ya tim laras, tim zammil
+cuma copas, berlaku sesuai pembagian diatas
