@@ -1,4 +1,4 @@
 # Final-Puskesmas-Patrang
 Project paling fix
 
-JANGAN DICOPAS ATU DITUNTUT
+JANGAN DICOPAS ATAU NANTI DITUNTUT
