@@ -12,6 +12,8 @@ use App\resep_obat;
 
 use DB;
 
+use Session;
+
 use Carbon\Carbon;
 
 class resepobatController extends Controller
@@ -39,6 +41,7 @@ class resepobatController extends Controller
 			'resep_obat' => $request->resep_obat,
 			]);
 		resep_obat::create($input);
+		Session::flash('flash_message', 'data berhasil disimpan');
 		return redirect('resep');
 	}
 

@@ -4,12 +4,13 @@
 	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<!--Import materialize.css-->
 	<link rel="stylesheet" type="text/css" href="{{ URL::asset('asset/css/materialize.min.css') }}">
+	<!-- 	<link rel="stylesheet" type="text/css" href="{{ URL::asset('asset/bootstrap/css/bootstrap.min.css') }}"> -->
 	<link rel="stylesheet" type="text/css" href="{{ URL::asset('asset/css/styleuser.css') }}">
 	<!--Let browser know website is optimized for mobile-->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	<title>Home</title>
+	<title>Home User</title>
 </head>
-<body style="background-color:#eceff1;">
+<body style="background-color:#cfd8dc;">
 	<a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
 	<ul id="slide-out" class="side-nav fixed">
 		<li>
@@ -23,7 +24,7 @@
 		</li>
 		<li><a href="{{URL('perawat')}}" class="waves-effect" ><i class="material-icons">home</i>HOME</a></li>
 		<li><div class="divider"></div></li>
-		<li><a href="{{URL('pemeriksaan')}}" class="waves-effect active" ><i class="material-icons">face</i>PELAYANAN PEMERIKSAAN</a></li>
+		<li><a href="{{URL('pemeriksaan')}}" class="waves-effect" ><i class="material-icons">face</i>PELAYANAN PEMERIKSAAN</a></li>
 		<li><div class="divider"></div></li>
 		<li>
 			<a class="waves-effect" href="{{URL('rujukan')}}">PERUJUKAN PASIEN
@@ -48,7 +49,7 @@
 		<div class="divider"></div>
 
 		<li>
-			<a class="waves-effect" href="{{URL('rawatinap')}}">PENGELOLAAN RAWAT INAP
+			<a class="waves-effect active" href="{{URL('rawatinap')}}">PENGELOLAAN RAWAT INAP
 				<i class="material-icons">assignment</i>
 			</a>
 		</li>
@@ -57,76 +58,43 @@
 	</ul>
 	<div class="container">
 		<div class="row">
-			<form class="col s11 offset-s2" method="POST" action="{{ url('/add/pemeriksaans') }}">
-				<input type="hidden" name="_token" value="{{ csrf_token() }}">
+			<form class="col s11 offset-s2" method="POST" action="{{ url('/add/rawatinaps') }}">
 				{{ csrf_field() }}
-				<h2 style="text-decoration:underline;">DATA PEMERIKSAAN</h2>
-
+				<h2 style="text-decoration:underline;">DATA RUJUKAN</h2>
 				<div class="row">
-					<div class="input-field col s3">
-						<select name="id_pendaftaran" required>
-							@foreach($pendaftarans as $pendaftaran)
-							<option value="{{$pendaftaran->id_pendaftaran}}">{{$pendaftaran->id_pendaftaran}}</option>
+					<div class="input-field col s10">
+						<select name="id_pelayanan">
+							@foreach($pelayanans as $pelayanan)
+							<option value="{{$pelayanan->id_pelayanan}}">{{$pelayanan->id_pelayanan}}</option>
 							@endforeach
-						</select>
-						<label for="icon_telephone" class="brown-text darken-4">PILIH ID PENDAFTARAN</label>
+						</select>		
+						<label for="icon_telephone">PILIH ID PELAYANAN</label>
 					</div>
 				</div>
 				<div class="row">
 					<div class="input-field col s10">
-						<input id="icon_telephone" type="text" class="validate" name="keluhan" required>
-						<label for="Alamat" class="brown-text darken-4">Keluhan</label>
+						<select name="id_kamar">
+							@foreach($kamars as $kamar)
+							<option value="{{$kamar->id_kamar}}">{{$kamar->id_kamar}}</option>
+							@endforeach
+						</select>		
+						<label for="icon_telephone">PILIH ID KAMAR</label>
 					</div>
 				</div>
 				<div class="row">
 					<div class="input-field col s10">
-						<input id="icon_telephone" type="tel" class="validate" name="diagnosa_penyakit" required>
-						<label for="icon_telephone" class="brown-text darken-4">Diagnosa Penyait</label>
+						<input id="icon_telephone" type="number" class="validate" name="lama_menginap" required>
+						<label for="lama_menginap">Lama Menginap</label><tt><p>(Dalam Satuan HARI)</p></tt>
 					</div>
 				</div>
 				<div class="row">
-					<div class="input-field col s3">
-						<select name="id_pegawai" required>
-							@foreach($pegawais as $pegawai)
-							<option value="{{$pegawai->id_pegawai}}">{{$pegawai->id_pegawai}}</option>
-							@endforeach
-						</select>
-						<label for="icon_telephone" class="brown-text darken-4">PILIH ID PEGAWAI</label>
+					<div class="input-field col s10">
+						<textarea id="textarea1" class="materialize-textarea" name="Keterangan_Pelayanan"></textarea>
+						<label for="textarea1" class="brown-text darken-4">Keterangan Pelayanan</label>
 					</div>
 				</div>
 				<div class="row">
-					<div class="input-field col s10" required>
-						<textarea id="textarea1" class="materialize-textarea" name="saran_dokter"></textarea>
-						<label for="textarea1" class="brown-text darken-4">Saran Dokter</label>
-					</div>
-				</div>
-				<div class="row">
-					<h5>
-						LAYANAN PEMERIKSAAN
-					</h5>
-					<p>
-						<input type="checkbox" id="test5" name="rawat_inap" value="1">
-						<label for="test5" class="brown-text darken-4">RAWAT INAP</label>
-					</p>
-					<p>
-						<input type="checkbox" id="test6" name="rekam_medis" value="1">
-						<label for="test6" class="brown-text darken-4">REKAM MEDIS</label>
-					</p>
-					<p>
-						<input type="checkbox" id="test7" name="rujukan" value="1">
-						<label for="test7" class="brown-text darken-4">RUJUKAN</label>
-					</p>
-					<p>
-						<input type="checkbox" id="test8" name="resep" value="1">
-						<label for="test8" class="brown-text darken-4">RESEP OBAT</label>
-					</p>
-					<p>
-						<input type="checkbox" id="test9" name="uji_lab" value="1">
-						<label for="test9" class="brown-text darken-4">UJI LAB</label>
-					</p>
-				</div>
-				<div class="row">
-					<div class="col-md-7 offset-s2">
+					<div class="col-md-7">
 						<button type="submit" class="btn btn-primary btn-block" >SIMPAN</button> <br>
 						<button type="reset" class="btn btn-primary btn-block" >BATAL</button>
 					</div>
@@ -134,6 +102,8 @@
 			</form>
 		</div>
 	</div>
+<!-- 	<script type="text/javascript" src="{{ URL::asset('asset/js/materialize.min.js') }}"></script>
+	<script type="text/javascript" src="{{ URL::asset('asset/js/jquery-1.11.1.min.js') }}"></script> -->
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
 	<script type="text/javascript">

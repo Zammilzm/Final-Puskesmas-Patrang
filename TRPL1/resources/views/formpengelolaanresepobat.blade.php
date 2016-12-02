@@ -22,18 +22,18 @@
 				<a href="#!name"><span class="white-text name">PERAWAT</span></a>
 			</div>
 		</li>
-		<li><a href="User.php" class="waves-effect" ><i class="material-icons">home</i>HOME</a></li>
+		<li><a href="{{URL('perawat')}}" class="waves-effect" ><i class="material-icons">home</i>HOME</a></li>
 		<li><div class="divider"></div></li>
-		<li><a href="profileuser.php" class="waves-effect" ><i class="material-icons">face</i>PELAYANAN PEMERIKSAAN</a></li>
+		<li><a href="{{URL('pemeriksaan')}}" class="waves-effect" href="{{URL('pelayananpemeriksaan')}}"><i class="material-icons">face</i>PELAYANAN PEMERIKSAAN</a></li>
 		<li><div class="divider"></div></li>
 		<li>
-			<a class="waves-effect active">PERUJUKAN PASIEN
+			<a class="waves-effect" href="{{URL('rujukan')}}">PERUJUKAN PASIEN
 				<i class="material-icons">assignment</i>
 			</a>
 		</li>
 		<div class="divider"></div>
 		<li>
-			<a class="waves-effect">LIHAT TES LAB DALAM
+			<a class="waves-effect" href="{{URL('teslab')}}">LIHAT TES LAB DALAM
 				<i class="material-icons">assignment</i>
 			</a>
 		</li>
@@ -41,7 +41,7 @@
 		<div class="divider"></div>
 
 		<li>
-			<a class="waves-effect">PENGELOLAAN RESEP OBAT
+			<a class="waves-effect active" href="{{URL('resep')}}">PENGELOLAAN RESEP OBAT
 				<i class="material-icons active">assignment</i>
 			</a>
 		</li>
@@ -49,7 +49,7 @@
 		<div class="divider"></div>
 
 		<li>
-			<a class="waves-effect">PENGELOLAAN RAWAT INAP
+			<a class="waves-effect" href="{{URL('rawatinap')}}">PENGELOLAAN RAWAT INAP
 				<i class="material-icons">assignment</i>
 			</a>
 		</li>
@@ -63,23 +63,24 @@
 				<h2 style="text-decoration:underline;">DATA RESEP OBAT</h2>
 				<div class="row">
 					<div class="input-field col s10">
-						<select name="id_pelayanan">
-							<option value="" disabled selected>Pilih Id Pelayanan</option>
+						<select name="id_pelayanan" required>
 							@foreach($pelayanans as $pelayanan)
 							<option value="{{$pelayanan->id_pelayanan}}">{{$pelayanan->id_pelayanan}}</option>
 							@endforeach
-						</select>		
+						</select>
+						<label for="icon_telephone">Pilih Resep Obat</label>		
 					</div>
 				</div>
 				<div class="row">
 					<div class="input-field col s10">
-						<input id="icon_telephone" type="tel" class="validate" name="resep_obat">
+						<input id="icon_telephone" type="tel" class="validate" name="resep_obat" required>
 						<label for="icon_telephone">Resep Obat</label>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-7">
-						<button type="submit" class="btn btn-primary btn-block" >SIMPAN</button>
+						<button type="submit" class="btn btn-primary btn-block" >SIMPAN</button> <br>
+						<button type="reset" class="btn btn-primary btn-block" >BATAL</button>
 					</div>
 				</div>
 			</form>

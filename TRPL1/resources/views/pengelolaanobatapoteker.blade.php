@@ -5,10 +5,11 @@
 	<!--Import materialize.css-->
 	<link rel="stylesheet" type="text/css" href="{{ URL::asset('asset/css/materialize.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ URL::asset('asset/css/styleuser.css') }}">
-		<link rel="stylesheet" type="text/css" href="{{ URL::asset('asset/css/datatables.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ URL::asset('asset/css/sweetalert.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ URL::asset('asset/css/datatables.min.css') }}">
 	<!--Let browser know website is optimized for mobile-->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	<title>Home User</title>
+	<title>APOTEKER</title>
 </head>
 <body style="background-color:#cfd8dc;">
 	<a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -18,70 +19,56 @@
 				<div class="background">
 					<img src="{{ URL::asset('/image/angga.jpg') }}">
 				</div>
-				<a href="#!user"><img class="circle" src="{{ URL::asset('/image/iconperawat.png') }}"></a>
+				<a href="#!user"><img class="circle" src="{{ URL::asset('/image/apoteker.png') }}"></a>
 				<a href="#!name"><span class="white-text name">PERAWAT</span></a>
 			</div>
 		</li>
 		<li><a href="{{URL('perawat')}}" class="waves-effect" ><i class="material-icons">home</i>HOME</a></li>
 		<li><div class="divider"></div></li>
-		<li><a href="{{URL('pemeriksaan')}}" class="waves-effect" ><i class="material-icons">face</i>PELAYANAN PEMERIKSAAN</a></li>
-		<li><div class="divider"></div></li>
 		<li>
-			<a class="waves-effect" href="{{URL('rujukan')}}">PERUJUKAN PASIEN
-				<i class="material-icons">assignment</i>
-			</a>
-		</li>
-		<div class="divider"></div>
-		<li>
-			<a class="waves-effect active" href="{{URL('teslab')}}">LIHAT TES LAB DALAM
+			<a class="waves-effect active" href="{{URL('resep')}}">RESEP OBAT APOTEKER
 				<i class="material-icons active">assignment</i>
 			</a>
 		</li>
-
-		<div class="divider"></div>
-
-		<li>
-			<a class="waves-effect" href="{{URL('resep')}}">PENGELOLAAN RESEP OBAT
-				<i class="material-icons">assignment</i>
-			</a>
-		</li>
-
-		<div class="divider"></div>
-
-		<li>
-			<a class="waves-effect" href="{{URL('rawatinap')}}">PENGELOLAAN RAWAT INAP
-				<i class="material-icons">assignment</i>
-			</a>
-		</li>
-		<div class="divider"></div>
 		<li><a href="home.php" class="waves-effect" ><i class="material-icons">power_settings_new</i>LOG OUT</a></li>
 	</ul>
 	<div class="container">
 		<div class="row">
 			<div class="col s12 offset-s2">
-				<h2 style="text-align:center; padding:0 0 30px 0; text-decoration:underline;">DAFTAR TES UJI LAB PASIEN</h2>
-				<table class="table table-condensed table-hover striped" id="table_lab">
+				<h2 style="text-align:center; padding:0 0 30px 0; text-decoration:underline;">DAFTAR RESEP OBAT</h2>
+				<!-- @if(Session::has('flash_message'))
+				<div class="alert alert-success alert-dismissible" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					{{Session::get('flash_message')}}
+				</div>
+				@endif -->
+				<a href="{{URL('formresepobatapoteker')}}" class="btn btn-primary">TAMBAH RESEP</a>
+				<table class="table table-condensed table-hover striped" id="table_obat">
 					<thead>
-						<th>ID Tes Lab Dalam</th>
+						<th>ID Resep</th>
 						<th>ID Pelayanan</th>
 						<th>Nama Pasien</th>
 						<th>Umur</th>
-						<th>Golongan Darah</th>
 						<th>Diagnosa Penyakit</th>
-						<th>Tanggal tes</th>
-						<th>Hasil Tes Lab</th>
+						<th>Resep Obat</th>
+						<th>Resep Apoteker</th>
+						<th>Aksi</th>
 					</thead>
 					<tbody>
-						@foreach($hasilteslabs as $hasilteslab)
+						@foreach($reseps as $resep)
 						<tr>
-							<td>{{ $hasilteslab->id_tes_laboran_dalam }}</td>
-							<td>{{ $hasilteslab->id_pelayanan}}</td>
-							<td>{{ $hasilteslab->pelayanan->pendaftaran->pasien->nama_pasien }}</td>
-							<td>{{ $hasilteslab->pelayanan->pendaftaran->pasien->umur }}</td>
-							<td>{{ $hasilteslab->pelayanan->pendaftaran->pasien->golongan_darah }}</td>
-							<td>{{ $hasilteslab->pelayanan->diagnosa_penyakit }}</td>
-							<td>{{ $hasilteslab->tanggal_tes }}</td>
-							<td>{{ $hasilteslab->hasil_tes_lab }}</td>
+							<td>{{ $resep->id_resep }}</td>
+							<td>{{ $resep->id_pelayanan}}</td>
+							<td>{{ $resep->pelayanan->pendaftaran->pasien->nama_pasien}}</td>
+							<td>{{ $resep->pelayanan->pendaftaran->pasien->umur}}</td>
+							<td>{{ $resep->pelayanan->diagnosa_penyakit }}</td>
+							<td>{{ $resep->resep_obat }}</td>
+							<td>{{ $resep->resep_tersedia }}</td>
+							<td>
+								<a href="/edit/obats/{{$resep->id_resep}}" class="btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="UPDATE">
+									<i class="material-icons">event_available</i>
+								</a>
+							</td>
 						</tr>
 						@endforeach
 					</tbody>
@@ -101,9 +88,10 @@
 	</script>
 	<script type="text/javascript" src="{{ URL::asset('asset/js/datatables.min.js') }}"></script>
 	<script type="text/javascript">
-			$(document).ready(function(){
-			$('#table_lab').DataTable();
-	});
+		$(document).ready(function(){
+			$('#table_obat').DataTable();
+		});
 	</script>
+	<script type="text/javascript" src="{{ URL::asset('asset/js/sweetalert.js') }}"></script>
 </body>
 </html>

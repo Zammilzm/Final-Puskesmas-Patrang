@@ -14,7 +14,9 @@
 Route::get('/website', function () {
     return view('TampilanAwal');
 });
-
+Route::get('/perawat', function () {
+    return view('homeperawat');
+});
 Route::get('rujukan','rujukanController@rujukan');
 
 Route::get('pemeriksaan','pelayananpemeriksaanController@pemeriksaan');
@@ -39,6 +41,8 @@ Route::get('teslab','tes_lab_dalamController@hasiltes');
 
 Route::get('resep','resepobatController@resep');
 
+Route::get('resepapoteker','resepapotekerController@resep');
+
 Route::get('formresepobat','resepobatController@formresep');
 
 Route::post('add/reseps','resepobatController@addresepobat');
@@ -46,3 +50,14 @@ Route::post('add/reseps','resepobatController@addresepobat');
 Route::get('edit/obats/{id_resep}','resepobatController@editresep');
 
 Route::put('update/obats/{id_resep}','resepobatController@updateresep'); 
+
+Route::get('rawatinap','rawatinapController@rawatinap');
+
+Route::get('formrawatinap','rawatinapController@formrawatinap');
+
+Route::post('add/rawatinaps','rawatinapController@addrawatinap');
+
+Route::get('edit/rawats/{id_rawat_inap}','rawatinapController@editrawatinap');
+
+Route::put('update/rawatinaps/{id_rawat_inap}','rawatinapController@updaterawatinap'); 
+

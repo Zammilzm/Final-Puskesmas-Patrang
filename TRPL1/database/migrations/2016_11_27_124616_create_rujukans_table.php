@@ -13,12 +13,12 @@ class CreateRujukansTable extends Migration
     public function up()
     {
         Schema::create('rujukans', function (Blueprint $table) {
-                                   $table->increments('id_rujukan');
-           $table->unsignedInteger('id_pelayanan');
-           $table->date('tanggal_rujukan');
-           $table->string('keterangan');
-           $table->string('tempat_rujukan');
-           $table->string('status_rujukan');
+            $table->increments('id_rujukan');
+            $table->unsignedInteger('id_pelayanan');
+            $table->date('tanggal_rujukan');
+            $table->string('keterangan');
+            $table->enum('tempat_rujukan',['Rsud_Situbondo','Rsud_Jember','Rsud_Arjasa','Jember_Klinik','Rsud_Patrang','Rsud_Banyuwangi','Rsud_Malang']);
+            $table->string('status_rujukan');
             $table->timestamps();
         });
     }

@@ -5,7 +5,6 @@
 	<!--Import materialize.css-->
 	<link rel="stylesheet" type="text/css" href="{{ URL::asset('asset/css/materialize.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ URL::asset('asset/css/styleuser.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ URL::asset('asset/css/datatables.min.css') }}">
 	<!--Let browser know website is optimized for mobile-->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<title>Home User</title>
@@ -22,9 +21,9 @@
 				<a href="#!name"><span class="white-text name">PERAWAT</span></a>
 			</div>
 		</li>
-		<li><a href="{{URL('perawat')}}" class="waves-effect" ><i class="material-icons">home</i>HOME</a></li>
+		<li><a href="{{URL('perawat')}}" class="waves-effect active" ><i class="material-icons">home</i>HOME</a></li>
 		<li><div class="divider"></div></li>
-		<li><a href="{{URL('pemeriksaan')}}" class="waves-effect active" ><i class="material-icons active">face</i>PELAYANAN PEMERIKSAAN</a></li>
+		<li><a href="{{URL('pemeriksaan')}}" class="waves-effect" ><i class="material-icons active">face</i>PELAYANAN PEMERIKSAAN</a></li>
 		<li><div class="divider"></div></li>
 		<li>
 			<a class="waves-effect" href="{{URL('rujukan')}}" >PERUJUKAN PASIEN
@@ -56,55 +55,45 @@
 		<div class="divider"></div>
 		<li><a href="home.php" class="waves-effect" ><i class="material-icons">power_settings_new</i>LOG OUT</a></li>
 	</ul>
-	<div class="container">
+	<div class="container" style="text-align:center;">
 		<div class="row">
-			<div class="col s12 offset-s2">
-				<h2 style="text-align:center; padding:0 0 30px 0; text-decoration:underline;">DAFTAR PEMERIKSAAN</h2>
-				@if(Session::has('flash_message'))
-				<div class="row">
-					<div class="card-panel teal lighten-2 chip">
-							{{Session::get('flash_message')}}
-						<i class="close material-icons">close</i>
-					</div>
-				</div>
-				@endif
-				<a href="{{URL('formpemeriksaan')}}" class="btn btn-primary">TAMBAH</a>
-				<table class="table table-condensed table-hover striped" id="table_periksa">
-					<thead>
-						<th>ID Pelayanan</th>
-						<th>ID Pendaftaran</th>
-						<th>Nama Pasien</th>
-						<th>Pilihan Layanan</th>
-						<th>Keluhan</th>
-						<th>Diagnosa Penyakit</th>
-						<th>Id Pegawai</th>
-						<th>Nama Pegawai</th>
-						<th>Saran Dokter</th>
-						<th>Aksi</th>
-					</thead>
-					<tbody>
-						@foreach($periksapasien as $periksa)
-						<tr>
-							<td>{{ $periksa->id_pelayanan }}</td>
-							<td>{{ $periksa->id_pendaftaran}}</td>
-							<td>{{ $periksa->pendaftaran->pasien->nama_pasien}}</td>
-							<td>{{ $periksa->pendaftaran->poli->nama_poli}}</td>
-							<td>{{ $periksa->keluhan}}</td>
-							<td>{{ $periksa->diagnosa_penyakit }}</td>
-							<td>{{ $periksa->id_pegawai }}</td>
-							<td>{{ $periksa->pegawai->nama_pegawai}}</td>
-							<td>{{ $periksa->saran_dokter }}</td>
-							<td>
-								<a href="/edit/pelayanans/{{$periksa->id_pelayanan}}" class="btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="UPDATE">
-									<i class="material-icons">event_available</i>
-								</a>
-							</td>
-						</tr>
-						@endforeach
-					</tbody>
-				</table>
+			<div class="col s10 offset-s2">
+				<h1 class="welcome-user">
+					SELAMAT DATANG <br> <span style="color:#004d40;">PERAWAT</span>
+				</h1>
 			</div>
 		</div>
+		<div class="row">
+			<div class="col s10 offset-s2">
+				<a class="waves-effect waves-light btn-large">
+					<i class="material-icons right">face</i>PELAYANAN PEMERIKSAAN
+				</a>
+				<a class="waves-effect waves-light btn-large">
+					<i class="material-icons right">language</i>PERUJUKAN PASIEN
+				</a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col s10 offset-s2">
+				<a class="waves-effect waves-light btn-large">
+					<i class="material-icons right">work</i>TES LAB DALAM
+				</a>
+				<a class="waves-effect waves-light btn-large">
+					<i class="material-icons right">shop</i>RESEP OBAT 
+				</a>
+				<a class="waves-effect waves-light btn-large">
+					<i class="material-icons right">home</i>RAWAT INAP
+				</a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col s12 offset-s1">
+				<h1 class="welcome-user-1">
+					PUSKESMAS-<span style="color:#004d40;">PATRANG.COM </span>
+				</h1>
+			</div>
+		</div>
+	</div>
 	</div>
 
 	<!-- 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script> -->
@@ -116,12 +105,6 @@
 		$( document ).ready(function(){$(".button-collapse").sideNav();});
 		$(document).ready(function() {
 			$('select').material_select();
-		});
-	</script>
-	<script type="text/javascript" src="{{ URL::asset('asset/js/datatables.min.js') }}"></script>
-	<script type="text/javascript">
-		$(document).ready(function(){
-			$('#table_periksa').DataTable();
 		});
 	</script>
 </body>

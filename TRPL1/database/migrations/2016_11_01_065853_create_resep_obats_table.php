@@ -16,6 +16,7 @@ class CreateResepObatsTable extends Migration
             $table->increments('id_resep');
             $table->unsignedInteger('id_pelayanan');
             $table->string('resep_obat');
+            $table->string('resep_tersedia');
             $table->timestamps();
     });
     }

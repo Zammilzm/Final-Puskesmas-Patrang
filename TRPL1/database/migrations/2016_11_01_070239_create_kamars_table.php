@@ -15,8 +15,8 @@ class CreateKamarsTable extends Migration
           Schema::create('kamars', function(Blueprint $table){
             $table->increments('id_kamar');
             $table->unsignedInteger('id_pegawai');
-            $table->string('nama_kamar',50);
-            $table->string('jenis_kamar',50);
+            $table->enum('nama_kamar',['Mawar','Melati','Anggrek']);
+            $table->string('jenis_kamar',['Umum','Vip']);
             $table->integer('no_kamar');
             $table->integer('tarif_kamar');
             $table->timestamps();

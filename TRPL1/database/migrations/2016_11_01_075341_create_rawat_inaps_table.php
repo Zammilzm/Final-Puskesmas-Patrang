@@ -12,15 +12,16 @@ class CreateRawatInapsTable extends Migration
      */
     public function up()
     {
-        
-                 Schema::create('rawat_inaps', function(Blueprint $table){
-            $table->increments('id_rawat_inap');
-            $table->unsignedInteger('id_pelayanan');
-            $table->unsignedInteger('id_kamar');
-            $table->integer('lama_menginap');
-            $table->timestamps();
+
+       Schema::create('rawat_inaps', function(Blueprint $table){
+        $table->increments('id_rawat_inap');
+        $table->unsignedInteger('id_pelayanan');
+        $table->unsignedInteger('id_kamar');
+        $table->integer('lama_menginap');
+        $table->text('Keterangan_Pelayanan');
+        $table->timestamps();
     });
-    }
+   }
 
     /**
      * Reverse the migrations.

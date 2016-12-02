@@ -22,26 +22,18 @@
 				<a href="#!name"><span class="white-text name">PERAWAT</span></a>
 			</div>
 		</li>
-		<li><a href="User.php" class="waves-effect" ><i class="material-icons">home</i>HOME</a></li>
+		<li><a href="{{URL('perawat')}}" class="waves-effect" ><i class="material-icons">home</i>HOME</a></li>
 		<li><div class="divider"></div></li>
-		<li><a href="profileuser.php" class="waves-effect" ><i class="material-icons">face</i>PELAYANAN PEMERIKSAAN</a></li>
+		<li><a href="{{URL('pemeriksaan')}}" class="waves-effect" ><i class="material-icons">face</i>PELAYANAN PEMERIKSAAN</a></li>
 		<li><div class="divider"></div></li>
 		<li>
-			<a class="waves-effect active">PERUJUKAN PASIEN
+			<a class="waves-effect active" href="{{URL('rujukan')}}">PERUJUKAN PASIEN
 				<i class="material-icons">assignment</i>
 			</a>
 		</li>
 		<div class="divider"></div>
 		<li>
-			<a class="waves-effect">LIHAT TES LAB DALAM
-				<i class="material-icons">assignment</i>
-			</a>
-		</li>
-
-		<div class="divider"></div>
-
-		<li>
-			<a class="waves-effect">PENGELOLAAN RESEP OBAT
+			<a class="waves-effect" href="{{URL('teslab')}}">LIHAT TES LAB DALAM
 				<i class="material-icons">assignment</i>
 			</a>
 		</li>
@@ -49,7 +41,15 @@
 		<div class="divider"></div>
 
 		<li>
-			<a class="waves-effect">PENGELOLAAN RAWAT INAP
+			<a class="waves-effect" href="{{URL('resep')}}">PENGELOLAAN RESEP OBAT
+				<i class="material-icons">assignment</i>
+			</a>
+		</li>
+
+		<div class="divider"></div>
+
+		<li>
+			<a class="waves-effect" href="{{URL('rawatinap')}}">PENGELOLAAN RAWAT INAP
 				<i class="material-icons">assignment</i>
 			</a>
 		</li>
@@ -85,8 +85,71 @@
 				</div>
 				<div class="row">
 					<div class="input-field col s10">
-						<input id="icon_telephone" type="tel" class="validate" name="tempat_rujukan" value="{{$datarujukans->tempat_rujukan}}">
-						<label for="icon_telephone">tempat rujukan</label>
+						<select name="tempat_rujukan" id="icon_telephone">
+							@if($datarujukans->tempat_rujukan == 'Rsud_Situbondo')
+							<option value="Rsud_Situbondo" selected>RSUD SITUBONDO</option>
+							<option value="Rsud_Jember">RSUD JEMBER</option>
+							<option value="Rsud_Arjasa">RSUD ARJASA</option>
+							<option value="Jember_Klinik">JEMBER KLINIK</option>
+							<option value="Rsud_Patrang">RSUD PATRANG</option>
+							<option value="Rsud_Banyuwangi">RSUD BANYUWANGI</option>
+							<option value="Rsud_Malang">RSUD MALANG</option>
+							@endif
+							@if($datarujukans->tempat_rujukan == 'Rsud_Jember')
+							<option value="Rsud_Situbondo">RSUD SITUBONDO</option>
+							<option value="Rsud_Jember" selected>RSUD JEMBER</option>
+							<option value="Rsud_Arjasa">RSUD ARJASA</option>
+							<option value="Jember_Klinik">JEMBER KLINIK</option>
+							<option value="Rsud_Patrang">RSUD PATRANG</option>
+							<option value="Rsud_Banyuwangi">RSUD BANYUWANGI</option>
+							<option value="Rsud_Malang">RSUD MALANG</option>
+							@endif
+							@if($datarujukans->tempat_rujukan=='Rsud_Arjasa')
+							<option value="Rsud_Situbondo">RSUD SITUBONDO</option>
+							<option value="Rsud_Jember">RSUD JEMBER</option>
+							<option value="Rsud_Arjasa" selected>RSUD ARJASA</option>
+							<option value="Jember_Klinik">JEMBER KLINIK</option>
+							<option value="Rsud_Patrang">RSUD PATRANG</option>
+							<option value="Rsud_Banyuwangi">RSUD BANYUWANGI</option>
+							<option value="Rsud_Malang">RSUD MALANG</option>
+							@endif
+							@if($datarujukans->tempat_rujukan=='Jember_Klinik')
+							<option value="Rsud_Situbondo">RSUD SITUBONDO</option>
+							<option value="Rsud_Jember">RSUD JEMBER</option>
+							<option value="Rsud_Arjasa">RSUD ARJASA</option>
+							<option value="Jember_Klinik" selected>JEMBER KLINIK</option>
+							<option value="Rsud_Patrang">RSUD PATRANG</option>
+							<option value="Rsud_Banyuwangi">RSUD BANYUWANGI</option>
+							<option value="Rsud_Malang">RSUD MALANG</option>
+							@endif
+							@if($datarujukans->tempat_rujukan=='Rsud_Patrang')
+							<option value="Rsud_Situbondo">RSUD SITUBONDO</option>
+							<option value="Rsud_Jember">RSUD JEMBER</option>
+							<option value="Rsud_Arjasa">RSUD ARJASA</option>
+							<option value="Jember_Klinik">JEMBER KLINIK</option>
+							<option value="Rsud_Patrang" selected>RSUD PATRANG</option>
+							<option value="Rsud_Banyuwangi">RSUD BANYUWANGI</option>
+							<option value="Rsud_Malang">RSUD MALANG</option>
+							@endif
+							@if($datarujukans->tempat_rujukan=='Rsud_Banyuwangi')
+							<option value="Rsud_Situbondo">RSUD SITUBONDO</option>
+							<option value="Rsud_Jember">RSUD JEMBER</option>
+							<option value="Rsud_Arjasa">RSUD ARJASA</option>
+							<option value="Jember_Klinik">JEMBER KLINIK</option>
+							<option value="Rsud_Patrang">RSUD PATRANG</option>
+							<option value="Rsud_Banyuwangi" selected>RSUD BANYUWANGI</option>
+							<option value="Rsud_Malang">RSUD MALANG</option>
+							@endif
+							@if($datarujukans->tempat_rujukan=='Rsud_Malang')
+							<option value="Rsud_Situbondo">RSUD SITUBONDO</option>
+							<option value="Rsud_Jember">RSUD JEMBER</option>
+							<option value="Rsud_Arjasa">RSUD ARJASA</option>
+							<option value="Jember_Klinik">JEMBER KLINIK</option>
+							<option value="Rsud_Patrang">RSUD PATRANG</option>
+							<option value="Rsud_Banyuwangi">RSUD BANYUWANGI</option>
+							<option value="Rsud_Malang" selected>RSUD MALANG</option>
+							@endif
+						</select>
 					</div>
 				</div>
 				<div class="row">
@@ -98,7 +161,10 @@
 				</div>
 				<div class="row">
 					<div class="col-md-7">
-						<button type="submit" class="btn btn-primary btn-block" >SIMPAN</button>
+						<button type="submit" class="btn btn-primary btn-block" >SIMPAN</button><br>
+						<a href="{{URL('rujukan')}}" class="btn btn-primary">
+							BATAL
+						</a>
 					</div>
 				</div>
 			</form>

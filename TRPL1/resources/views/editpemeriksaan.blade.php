@@ -21,26 +21,18 @@
 				<a href="#!name"><span class="white-text name">PERAWAT</span></a>
 			</div>
 		</li>
-		<li><a href="User.php" class="waves-effect" ><i class="material-icons">home</i>HOME</a></li>
+		<li><a href="{{URL('perawat')}}" class="waves-effect" ><i class="material-icons">home</i>HOME</a></li>
 		<li><div class="divider"></div></li>
-		<li><a href="profileuser.php" class="waves-effect" ><i class="material-icons">face</i>PELAYANAN PEMERIKSAAN</a></li>
+		<li><a href="{{URL('pemeriksaan')}}" class="waves-effect active" ><i class="material-icons">face</i>PELAYANAN PEMERIKSAAN</a></li>
 		<li><div class="divider"></div></li>
 		<li>
-			<a class="waves-effect active">PERUJUKAN PASIEN
+			<a class="waves-effect" href="{{URL('rujukan')}}">PERUJUKAN PASIEN
 				<i class="material-icons">assignment</i>
 			</a>
 		</li>
 		<div class="divider"></div>
 		<li>
-			<a class="waves-effect">LIHAT TES LAB DALAM
-				<i class="material-icons">assignment</i>
-			</a>
-		</li>
-
-		<div class="divider"></div>
-
-		<li>
-			<a class="waves-effect">PENGELOLAAN RESEP OBAT
+			<a class="waves-effect" href="{{URL('teslab')}}">LIHAT TES LAB DALAM
 				<i class="material-icons">assignment</i>
 			</a>
 		</li>
@@ -48,7 +40,15 @@
 		<div class="divider"></div>
 
 		<li>
-			<a class="waves-effect">PENGELOLAAN RAWAT INAP
+			<a class="waves-effect" href="{{URL('resep')}}">PENGELOLAAN RESEP OBAT
+				<i class="material-icons">assignment</i>
+			</a>
+		</li>
+
+		<div class="divider"></div>
+
+		<li>
+			<a class="waves-effect" href="{{URL('rawatinap')}}">PENGELOLAAN RAWAT INAP
 				<i class="material-icons">assignment</i>
 			</a>
 		</li>
@@ -73,13 +73,13 @@
 				<div class="row">
 					<div class="input-field col s10">
 						<input id="icon_telephone" type="tel" class="validate" name="keluhan" value="{{$dataPelayanans->keluhan}}">
-						<label for="Alamat">Keluhan</label>
+						<label for="Alamat" class="brown-text darken-4">Keluhan</label>
 					</div>
 				</div>
 				<div class="row">
 					<div class="input-field col s10">
 						<input id="icon_telephone" type="tel" class="validate" name="diagnosa_penyakit" value="{{$dataPelayanans->diagnosa_penyakit}}">
-						<label for="icon_telephone">Diagnosa Penyait</label>
+						<label for="icon_telephone" class="brown-text darken-4">Diagnosa Penyait</label>
 					</div>
 				</div>
 				<div class="row">
@@ -90,6 +90,7 @@
 							<option {{($dataPelayanans->id_pegawai==$pegawai->id_pegawai)?'selected':''}} value="{{$pegawai->id_pegawai}}">{{$pegawai->id_pegawai}}</option>
 							@endforeach
 						</select>
+						<label for="icon_telephone" class="brown-text darken-4">PILIH ID PEGAWAI</label>
 					</div>
 				</div>
 				<div class="row">
@@ -97,7 +98,7 @@
 						<textarea id="textarea1" class="materialize-textarea" name="saran_dokter" >
 							{{$dataPelayanans->saran_dokter}}
 						</textarea>
-						<label for="textarea1">Saran Dokter</label>
+						<label for="textarea1" class="brown-text darken-4">Saran Dokter</label>
 					</div>
 				</div>
 				<div class="row">
@@ -106,40 +107,33 @@
 							LAYANAN PEMERIKSAAN
 						</h5>
 						<p>
-							@if($dataPelayanans->rawat_inap==1)
-							<input type="checkbox" id="test5" name="rawat_inap" value="1" checked>
-							@endif
-							<label for="test5">RAWAT INAP</label>
+							<input type="checkbox" id="test5" name="rawat_inap" value="1" {{ $dataPelayanans->rawat_inap==1 ? 'checked' : '' }}>
+							<label for="test5" class="brown-text darken-4">RAWAT INAP</label>
+						</p>
+						<p>							
+							<input type="checkbox" id="test6" name="rekam_medis" value="1" {{ $dataPelayanans->rekam_medis==1 ? 'checked' : ''  }}>
+							<label for="test6" class="brown-text darken-4">REKAM MEDIS</label>
 						</p>
 						<p>
-							@if($dataPelayanans->rekam_medis==1)
-							<input type="checkbox" id="test6" name="rekam_medis" value="1" checked>
-							@endif
-							<label for="test6">REKAM MEDIS</label>
+							<input type="checkbox" id="test7" name="rujukan" value="1" {{ $dataPelayanans->rujukan==1 ? 'checked' : ''  }}>
+							<label for="test7" class="brown-text darken-4">RUJUKAN</label>
 						</p>
 						<p>
-							@if($dataPelayanans->rujukan==1)
-							<input type="checkbox" id="test7" name="rujukan" value="1" checked>
-							@endif
-							<label for="test7">RUJUKAN</label>
+							<input type="checkbox" id="test8" name="resep" value="1" {{ $dataPelayanans->resep==1 ? 'checked' : ''  }}>
+							<label for="test8" class="brown-text darken-4">RESEP OBAT</label>
 						</p>
 						<p>
-							@if($dataPelayanans->resep==1)
-							<input type="checkbox" id="test8" name="resep" value="1" checked>
-							@endif
-							<label for="test8">RESEP OBAT</label>
-						</p>
-						<p>
-							@if($dataPelayanans->uji_lab==1)
-							<input type="checkbox" id="test9" name="uji_lab" value="1" checked>
-							@endif
-							<label for="test9">UJI LAB</label>
+							<input type="checkbox" id="test9" name="uji_lab" value="1" {{ $dataPelayanans->uji_lab==1 ? 'checked' : ''  }}>
+							<label for="test9" class="brown-text darken-4">UJI LAB</label>
 						</p>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-7">
-						<button type="submit" class="btn btn-primary btn-block" >SIMPAN</button>
+						<button type="submit" class="btn btn-primary btn-block" >SIMPAN</button><br>
+						<a href="{{URL('pemeriksaan')}}" class="btn btn-primary">
+							BATAL
+						</a>
 					</div>
 				</div>
 			</form>
