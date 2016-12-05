@@ -41,8 +41,6 @@ Route::get('teslab','tes_lab_dalamController@hasiltes');
 
 Route::get('resep','resepobatController@resep');
 
-Route::get('resepapoteker','resepapotekerController@resep');
-
 Route::get('formresepobat','resepobatController@formresep');
 
 Route::post('add/reseps','resepobatController@addresepobat');
@@ -60,4 +58,8 @@ Route::post('add/rawatinaps','rawatinapController@addrawatinap');
 Route::get('edit/rawats/{id_rawat_inap}','rawatinapController@editrawatinap');
 
 Route::put('update/rawatinaps/{id_rawat_inap}','rawatinapController@updaterawatinap'); 
+
+Route::get('resepapoteker','resepapotekerController@resep');
+
+Route::get('formresepobatapoteker','resepapotekerController@formresep');
 

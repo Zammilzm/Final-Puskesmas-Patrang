@@ -39,11 +39,12 @@
 				<div class="row">
 					<div class="input-field col s10">
 						<select name="id_pelayanan" required>
+						<option value="#"> Pilih Id Pelayanan</option>
 							@foreach($pelayanans as $pelayanan)
 							<option value="{{$pelayanan->id_pelayanan}}">{{$pelayanan->id_pelayanan}}</option>
 							@endforeach
 						</select>
-						<label for="icon_telephone">Pilih Resep Obat</label>		
+						<label for="icon_telephone">Pilih ID PELAYANAN</label>		
 					</div>
 				</div>
 				<div class="row">
@@ -85,9 +86,8 @@
 	$(document).ready(function(){
 		$('#id_obat').change(function(){
 			$.get( "/resep/"+$('#id_obat').val(), function(data) {
-				$( "#id_pelayanan" ).val(data.tanam.buah.nama_buah);
-				$( "#resep_obat" ).val(data.tanam.tanggal_tanam);
-				$( "#resep_tersedia" ).val(data.tanggal_panen);
+				$( "#id_pelayanan" ).val(data.id_pelayanan);
+				$( "#resep_obat" ).val(data.resep_obat);
 			});
 		});
 

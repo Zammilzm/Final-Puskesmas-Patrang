@@ -24,15 +24,11 @@ class resepapotekerController extends Controller
 		return view('pengelolaanobatapoteker', compact('reseps'));
 	}
 
-	// public function formresep()
-	// {
-	// 	$pelayanans = pelayanan::whereNotExists(function($query){
-	// 		$query->select(DB::raw(1))
-	// 		->from('resep_obats')
-	// 		->whereRaw('resep_obats.id_pelayanan = pelayanans.id_pelayanan');
-	// 	})->where('resep','=','1')->get();
-	// 	return view('formpengelolaanresepobat', compact('pelayanans'));
-	// }
+	public function formresep()
+	{
+		$reseps = resep_obat::all();
+		return view('formpengelolaanresepobatapoteker', compact('reseps'));
+	}
 
 	// public function addresepobat(Request $request)
 	// {
